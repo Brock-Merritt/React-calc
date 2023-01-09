@@ -8,7 +8,7 @@ export const ACTIONS = {
   CHOOSE_OPERATION: "choose-operation",
   CLEAR: "clear",
   DELETE_DIGIT: "delete-digit",
-  EVALUATE: 'evaluate'
+  EVALUATE: "evaluate",
 }
 
 function reducer(state, {type, payload}) {
@@ -16,13 +16,13 @@ function reducer(state, {type, payload}) {
     case ACTIONS.ADD_DIGIT:
     return{
       ...state,
-      currentOperand: `${state.currentOperand || ""}${payload.didit}`
+      currentOperand: `${state.currentOperand || ""}${payload.didit}`,
     }
   }
 }
 
 function App() {
-  const [{currentOperand,previousOperand, operation}, dispatch] = useReducer(
+  const [{currentOperand, previousOperand, operation }, dispatch] = useReducer(
     reducer, 
     {}
     )
