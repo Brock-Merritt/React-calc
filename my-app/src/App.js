@@ -1,12 +1,13 @@
 import { useReducer } from 'react'
 import "./styles.css"
 import DigitButton from './DigitButton'
+import OperationButton from './OperationButton'
 
-export const ACTIONS ={
-  ADD_DIGIT: 'add-digit',
-  CHOOSE_OPERATION: 'choose-operation',
-  CLEAR: 'clear',
-  DELETE_DIGIT: 'delete-digit',
+export const ACTIONS = {
+  ADD_DIGIT: "add-digit",
+  CHOOSE_OPERATION: "choose-operation",
+  CLEAR: "clear",
+  DELETE_DIGIT: "delete-digit",
   EVALUATE: 'evaluate'
 }
 
@@ -15,13 +16,16 @@ function reducer(state, {type, payload}) {
     case ACTIONS.ADD_DIGIT:
     return{
       ...state,
-      currentOperand: `${currentOperand} || "" ${payload.digit}`
+      currentOperand: `${state.currentOperand || ""}${payload.didit}`
     }
   }
 }
 
 function App() {
-  const [{currentOperand,previousOperand, operation}, dispatch] = useReducer(reducer, {})
+  const [{currentOperand,previousOperand, operation}, dispatch] = useReducer(
+    reducer, 
+    {}
+    )
 
   
   return (
